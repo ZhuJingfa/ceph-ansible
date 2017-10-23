@@ -5,7 +5,7 @@
     description: nfs-ganesha stable repo
     gpgcheck: yes
     state: present
-    gpgkey: "{{ ceph_stable_key }}"
+    gpgkey: "{{ lookup('file', playbook_dir +'roles/ceph-common/files/cephstable.asc') }}"
     baseurl: "{{ ceph_mirror }}/nfs-ganesha/rpm-{{ nfs_ganesha_stable_branch }}/{{ ceph_release }}/$basearch"
   when:
     - ansible_os_family == 'RedHat'
